@@ -14,7 +14,6 @@ router.get('/message', function(req,res)
     res.header({
         "custom-header": "hola"
     })
-    //res.send('Hola desde get');
     response.success(req,res,"lista de mensajes",201);
 });
 router.post('/message', function(req,res)
@@ -22,7 +21,7 @@ router.post('/message', function(req,res)
     console.log(req.query);
     if (req.query.error == 'ok')
     {
-        response.success(req,res,"Error simulado");
+        response.success(req,res,"Error simulado", 500, 'es solo una simulacion de los errores');
     }
     response.success(req,res,"Creado correctamente",201);
 });
