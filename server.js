@@ -18,6 +18,10 @@ router.get('/message', function(req,res)
 router.post('/message', function(req,res)
 {
     res.send('Hola desde post');
+    res.status(200).send([{
+        'error': null,
+        'body': 'Ejecutado correctamente!'
+     }]);
 });
 router.delete('/message', function(req,res)
 {
