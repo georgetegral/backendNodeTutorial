@@ -18,6 +18,7 @@ router.post('/message', function(req,res)
 router.delete('/message', function(req,res)
 {
     console.log(req.body);
+    console.log(req.query);
     res.send('Borrado');
 });
 
