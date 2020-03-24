@@ -9,6 +9,10 @@ app.use(router);
 
 router.get('/message', function(req,res)
 {
+    console.log(req.headers);
+    res.header({
+        "custom-header": "hola"
+    })
     res.send('Hola desde get');
 });
 router.post('/message', function(req,res)
