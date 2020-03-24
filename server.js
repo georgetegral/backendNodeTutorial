@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 
 var app = express();
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 
 router.get('/message', function(req,res)
