@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
+const response = require('./network/response');
 
 var app = express();
 app.use(bodyParser.json());
@@ -13,15 +14,17 @@ router.get('/message', function(req,res)
     res.header({
         "custom-header": "hola"
     })
-    res.send('Hola desde get');
+    //res.send('Hola desde get');
+    response.success(req,res,"lista de mensajes",201);
 });
 router.post('/message', function(req,res)
 {
-    res.send('Hola desde post');
-    res.status(200).send([{
-        'error': null,
-        'body': 'Ejecutado correctamente!'
-     }]);
+    console.log(req.query);
+    if (req.query.error == 'ok')
+    {
+        response.success(req,res,"Error simulado");
+    }
+    response.success(req,res,"Creado correctamente",201);
 });
 router.delete('/message', function(req,res)
 {
