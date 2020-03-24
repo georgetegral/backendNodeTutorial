@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 
 var app = express();
-//app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 
 router.get('/message', function(req,res)
@@ -19,7 +19,7 @@ router.delete('/message', function(req,res)
 {
     console.log(req.body);
     console.log(req.query);
-    res.send('Borrado');
+    res.send('¡Mensaje '+req.body.text+' añadido correctamente!');
 });
 
 app.listen(3000);
