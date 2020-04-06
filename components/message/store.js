@@ -12,14 +12,16 @@ db.connect('mongodb+srv://db_user_node:db_user_node@nodetest-6arkr.azure.mongodb
 //console.log('[db] conectada con exito');
 
 function addMessage(message) {
-    // list.push(message);
     const myMessage = new Model(message);
     myMessage.save();
 }
 
-async function getMessages() {
-    // return list;
-    const messages = await Model.find();
+async function getMessages(filterUser) {
+    let filter = {};
+    if(filterUser != null){
+        filter = { user: filterUser };
+    }
+    const messages = await Model.find(filter);
     return messages;
 }
 
